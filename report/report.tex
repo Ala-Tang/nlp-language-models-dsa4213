@@ -8,6 +8,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{placeins}
 
 \graphicspath{{figures/}}
 \setlength{\textfloatsep}{7pt}
@@ -50,7 +51,10 @@ weights chosen on validation data. RNN and LSTM models use 100-dimensional embed
 256-unit recurrent layers, dropout 0.3, and a linear output. The Transformer uses a
 100-to-128 input projection, four heads, three layers, a 512-unit feed-forward block, learned
 positions, dropout 0.1, and a causal mask. Neural models use context length 64, batch size 64,
-AdamW, gradient clipping at 1.0, and seed 42. The best validation checkpoint is tested once.
+AdamW with learning rate 0.001, and gradient clipping at 1.0. The main experiment trains for 20
+epochs, and a supplementary experiment uses 8 epochs. The main results use seed 42. Seeds 1, 2,
+and 3 repeat the 20-epoch experiment to assess stability (Table~\ref{tab:seeds}). The 8-epoch
+experiment uses seed 42 only. The best validation checkpoint is tested once.
 Perplexity is the exponential of mean non-padding token cross-entropy. Experiments ran on a
 Colab Tesla T4 with Python 3.13.15 and PyTorch 2.11.0.
 % Sources: config.yaml; results_e20/part1/summary.json.
@@ -155,12 +159,14 @@ GloVe, frozen & 147.12 & 5.050 & \textbf{0.368} & 904.14 \\
 
 Word2Vec covers 28,912 of 28,913 types (99.997\%) and takes 65.00 seconds to train. GloVe covers
 27,809 types (96.182\%). Both frozen variants pass the exact freeze check. We observe that both
-beat the trainable random table, while Word2Vec and GloVe are close. A possible explanation is
-that freezing regularizes the large input table. External GloVe data may also help, but it does
-not beat in-domain Word2Vec here. Thus, more external data is not sufficient by itself.
+beat the trainable random table for seed 42, while Word2Vec and GloVe are close. A possible
+explanation is that freezing regularizes the large input table. Word2Vec is slightly better in
+the seed-42 run, but the two frozen settings trade places across the four seeds. Their mean
+gap is 0.54, below the combined sample standard deviation of 2.63 (Table~\ref{tab:seeds}), so
+this experiment cannot distinguish them. External data does not provide a reliable additional benefit here.
 % Sources: results_e20/part2/coverage.json, results_e20/part2/summary.json, and results_e20/part2/log.txt.
 
-Budget again matters: at eight epochs the ranking is Word2Vec 180.89, random 211.29, and GloVe
+For seed 42, budget again matters: at eight epochs the ranking is Word2Vec 180.89, random 211.29, and GloVe
 229.73, while at twenty epochs it is Word2Vec 146.52, GloVe 147.12, and random 154.73. GloVe
 starts slowly but nearly catches Word2Vec. Its smaller final train--validation gap is consistent
 with stronger regularization, although this is a hypothesis rather than a controlled test.
@@ -209,26 +215,7 @@ Majority class & -- & 0.5092 & -- \\
 \label{tab:part3}
 \end{table}
 
-We observe that masked mean pooling beats the LSTM last state, and Transformer mean is best.
-The 20-epoch LM ranking does not transfer: LSTM and Transformer rank first/second by perplexity
-(154.73/163.06), but second/first by classification accuracy (0.6456/0.6640). At eight epochs,
-Transformer ranks first on both tasks. A possible explanation is that the Transformer mean states
-retain sentiment cues more effectively, but domain shift from WikiText to reviews and the 6.92\%
-test OOV rate are also plausible factors.
-% Sources: results_e20/part3/summary.json and results_e8/part3/summary.json.
-
-The test set contains 428 negative and 444 positive examples, so always predicting the positive
-majority gives 0.5092 accuracy. All learned representations are well above this weak baseline.
-% Source: results_e20/part3/errors.csv.
-
-Manual error inspection shows recurring surface patterns. Mixed statements such as ``nothing
-outstanding ... but ... good enough'' split the two mean representations. Sarcasm or indirect
-criticism such as ``Holden Caulfield did it better'' and rhetorical questions are also difficult.
-Some positive comparisons are missed by LSTM mean but found by Transformer mean. These categories
-describe examples; they do not establish causal failure modes.
-% Source: results_e20/part3/errors.csv.
-
-\begin{table}[t]
+\begin{table}[ht]
 \centering
 \footnotesize
 \caption{Four-seed 20-epoch results (mean $\pm$ sample standard deviation).}
@@ -251,21 +238,41 @@ III & LSTM last & Acc.\ $0.6095\pm0.0129$; F1 $0.6066\pm0.0123$ \\
 \label{tab:seeds}
 \end{table}
 
-The Part I ranking is identical for all four seeds. The mean LSTM--Transformer PPL gap is 8.31,
-larger than their combined standard deviation of 1.44. In Part II, Word2Vec and GloVe exchange
-first place across seeds; their mean gap is only 0.54, below the combined standard deviation 2.63.
-For Part III, Transformer mean leads LSTM mean by 0.0072 accuracy on average, below the combined
-standard deviation 0.0206, and seed 2 reverses their order. Both mean representations are more
-consistently above LSTM last. These four seeds support stability only within this tested range.
-The eight-epoch comparison uses seed 42 only.
-% Source: analysis/multiseed_summary.json.
+For seed 42, both masked-mean representations beat the LSTM last state, and Transformer mean has
+the highest accuracy. In that run the rankings disagree: the LSTM has lower perplexity than the
+Transformer (154.73 versus 163.06) but lower accuracy (0.6456 versus 0.6640). Across four seeds,
+the Part I ranking is identical. The mean LSTM--Transformer perplexity gap is 8.31, larger than
+their combined sample standard deviation of 1.44, so the perplexity advantage is stable. The mean
+accuracy gap between Transformer mean and LSTM mean is only 0.0072, below their combined sample
+standard deviation of 0.0206, and seed 2 reverses their order. The perplexity advantage therefore
+does not reliably become a classification advantage. Both mean representations are more
+consistently above the LSTM last state. In the seed-42 eight-epoch run, the Transformer ranks
+first on both perplexity and classification, but that comparison uses one seed. Domain shift from
+WikiText to reviews and the 6.92\% test OOV rate remain plausible factors; these results do not
+isolate them.
+% Sources: results_e20/part3/summary.json, results_e8/part1/summary.json,
+% results_e8/part3/summary.json, and analysis/multiseed_summary.json.
+
+The test set contains 428 negative and 444 positive examples, so always predicting the positive
+majority gives 0.5092 accuracy. All learned representations are well above this weak baseline.
+% Source: results_e20/part3/errors.csv.
+
+Manual error inspection shows recurring surface patterns. Mixed statements such as ``nothing
+outstanding ... but ... good enough'' split the two mean representations. Sarcasm or indirect
+criticism such as ``Holden Caulfield did it better'' and rhetorical questions are also difficult.
+Some positive comparisons are missed by LSTM mean but found by Transformer mean. These categories
+describe seed-42 examples; they do not establish causal failure modes.
+% Source: results_e20/part3/errors.csv.
+
+\FloatBarrier
 
 \section{Limitations \& Lessons}
 The LSTM may not be fully converged at 20 epochs, so its final ranking can still change. All neural
 models are small, and architecture comparisons are confounded by parameter count. WikiText and
 SST-2 have different domains, while SST-2 still contains OOV tokens. T4 kernels can be
-nondeterministic: the two runs match exactly for RNN losses only at the four decimal places stored
-in logs, while LSTM and Transformer values differ slightly. Four seeds give only a limited view of
+nondeterministic: the first eight epochs of the seed-42 8-epoch run and the seed-42 20-epoch
+run match exactly for RNN losses only at the four decimal places stored in the logs, while the
+LSTM and Transformer values differ slightly. Four seeds give only a limited view of
 variance. For seed 42, all three classifiers select $C=0.01$, the lower search boundary. Across
 seeds, selected values vary: LSTM mean uses 0.01--1, Transformer mean 0.01--0.1, and LSTM last
 reaches the upper boundary 10 for seed 3. The search range may therefore be too narrow. The main
@@ -274,10 +281,11 @@ perplexity nor one embedding assumption gives a stable overall ranking.
 % Source: analysis/multiseed_summary.json.
 
 \section{AI/Tool Use Statement}
-The code was written mainly by an AI programming assistant. The experimental design was proposed
-with AI assistance and reviewed and approved by the author. The author ran the experiments,
-checked the fairness of comparisons, and verified the results. The report was drafted with AI
-assistance from the saved results and then reviewed and revised by the author.
+Cursor, an AI programming assistant, was used to write the code and draft the report. Claude was
+used for experiment planning, interpretation of the results, and review. The experimental design
+was proposed with this assistance and reviewed and approved by the author. The author ran the
+experiments, checked the fairness of comparisons, and verified the results. The drafted report
+was then reviewed and revised by the author.
 
 \bibliographystyle{plainnat}
 \bibliography{references}
