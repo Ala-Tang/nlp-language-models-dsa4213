@@ -1,0 +1,57 @@
+{
+  "quick": false,
+  "seed": 42,
+  "dataset": "nyu-mll/glue:sst2",
+  "data_source": {
+    "wikitext_vocabulary": "huggingface:Salesforce/wikitext:wikitext-2-v1",
+    "sst2": "huggingface:nyu-mll/glue:sst2"
+  },
+  "split_sizes": {
+    "train": 10000,
+    "validation": 2000,
+    "test": 872
+  },
+  "vocab_size": 28913,
+  "oov_ratio": {
+    "train": 0.07680185947564362,
+    "validation": 0.07368875251701985,
+    "test": 0.06921306444541868
+  },
+  "metrics": {
+    "lstm_mean": {
+      "best_c": 0.01,
+      "validation_accuracy": 0.633,
+      "test_accuracy": 0.6215596330275229,
+      "test_macro_f1": 0.6197594029472082
+    },
+    "transformer_mean": {
+      "best_c": 1.0,
+      "validation_accuracy": 0.6655,
+      "test_accuracy": 0.6479357798165137,
+      "test_macro_f1": 0.6459686388709253
+    },
+    "lstm_last": {
+      "best_c": 0.1,
+      "validation_accuracy": 0.592,
+      "test_accuracy": 0.5412844036697247,
+      "test_macro_f1": 0.5298481711525189
+    }
+  },
+  "rank_comparison": [
+    {
+      "model": "lstm",
+      "part1_perplexity": 211.29152185229583,
+      "perplexity_rank": 2,
+      "classification_accuracy": 0.6215596330275229,
+      "classification_rank": 2
+    },
+    {
+      "model": "transformer",
+      "part1_perplexity": 164.54887836956993,
+      "perplexity_rank": 1,
+      "classification_accuracy": 0.6479357798165137,
+      "classification_rank": 1
+    }
+  ],
+  "language_models_frozen": true
+}

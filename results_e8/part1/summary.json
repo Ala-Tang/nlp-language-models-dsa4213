@@ -1,0 +1,116 @@
+{
+  "quick": false,
+  "seed": 42,
+  "corpus": "Salesforce/wikitext:wikitext-2-v1",
+  "data_source": "huggingface:Salesforce/wikitext:wikitext-2-v1",
+  "token_counts": {
+    "train": 2075677,
+    "validation": 216347,
+    "test": 244102
+  },
+  "vocab_size": 28913,
+  "hardware": {
+    "device": "cuda",
+    "name": "Tesla T4",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "python": "3.13.15",
+    "torch": "2.11.0+cu130"
+  },
+  "models": {
+    "ngram": {
+      "validation": {
+        "weights": [
+          0.25,
+          0.5,
+          0.25,
+          0.0
+        ],
+        "loss": 5.642461576351645,
+        "perplexity": 282.15641388878197,
+        "tokens": 216346
+      },
+      "test": {
+        "loss": 5.57840169920702,
+        "perplexity": 264.64828001957426,
+        "tokens": 244101
+      },
+      "parameters": 0,
+      "count_entries": 1993038,
+      "train_seconds": 26.30534895400001,
+      "inference_tokens_per_second": 343103.00978400244
+    },
+    "rnn": {
+      "test": {
+        "loss": 5.196555453736363,
+        "perplexity": 180.64891540643714,
+        "tokens": 244101
+      },
+      "parameters": {
+        "total": 10545173,
+        "trainable": 10545173
+      },
+      "train_seconds": 333.8577526670001,
+      "epoch_seconds": [
+        36.58329862100004,
+        38.93485246099999,
+        41.06773637200013,
+        40.24997355100004,
+        41.10877390700011,
+        40.88823445899993,
+        41.111480033000134,
+        41.085336608000034
+      ],
+      "best_validation_loss": 5.277566257797116,
+      "inference_tokens_per_second": 192857.6502364837
+    },
+    "lstm": {
+      "test": {
+        "loss": 5.353238800070207,
+        "perplexity": 211.29152185229583,
+        "tokens": 244101
+      },
+      "parameters": {
+        "total": 11214869,
+        "trainable": 11214869
+      },
+      "train_seconds": 366.476162186,
+      "epoch_seconds": [
+        43.55164105199992,
+        43.903475183999944,
+        43.98539599599985,
+        43.97248683099997,
+        44.12139144799994,
+        44.21001540300017,
+        44.40163164900014,
+        44.236089558
+      ],
+      "best_validation_loss": 5.420773682550174,
+      "inference_tokens_per_second": 166520.85384567286
+    },
+    "transformer": {
+      "test": {
+        "loss": 5.103207659015889,
+        "perplexity": 164.54887836956993,
+        "tokens": 244101
+      },
+      "parameters": {
+        "total": 7237013,
+        "trainable": 7237013
+      },
+      "train_seconds": 254.708489117,
+      "epoch_seconds": [
+        30.430027926000093,
+        30.48441499600017,
+        30.763697441999966,
+        30.83656427799997,
+        30.751848174000088,
+        30.72371212799999,
+        30.804199206999783,
+        30.65054520900003
+      ],
+      "best_validation_loss": 5.172640213044152,
+      "inference_tokens_per_second": 288678.47490273754,
+      "causality_test": "PASSED"
+    }
+  }
+}

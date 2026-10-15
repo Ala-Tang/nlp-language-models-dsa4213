@@ -1,0 +1,18 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Generating test split:   0%|          | 0/4358 [00:00<?, ? examples/s]
+Generating test split: 100%|██████████| 4358/4358 [00:00<00:00, 121199.19 examples/s]
+
+Generating train split:   0%|          | 0/36718 [00:00<?, ? examples/s]
+Generating train split: 100%|██████████| 36718/36718 [00:00<00:00, 687964.93 examples/s]
+
+Generating validation split:   0%|          | 0/3760 [00:00<?, ? examples/s]
+Generating validation split: 100%|██████████| 3760/3760 [00:00<00:00, 468748.75 examples/s]
+[Part I] data source: "huggingface:Salesforce/wikitext:wikitext-2-v1"
+[Part I] token counts: train=7169, validation=1128, test=1105
+[Part I] vocabulary size: 704
+epoch 1/1: train=6.5183, val=5.8554, time=1.67s
+epoch 1/1: train=6.5455, val=6.4008, time=0.04s
+epoch 1/1: train=6.5722, val=5.2128, time=0.16s
+Transformer causality test: PASSED
+Part I 完成：results/part1/quick

@@ -1,0 +1,18 @@
+{
+  "word2vec": {
+    "covered": 632,
+    "vocabulary_size": 704,
+    "coverage": 0.8977272727272727,
+    "oov": 72,
+    "oov_initialization_std": 0.1,
+    "quick_mock": true
+  },
+  "glove": {
+    "covered": 456,
+    "vocabulary_size": 704,
+    "coverage": 0.6477272727272727,
+    "oov": 248,
+    "oov_initialization_std": 0.1,
+    "quick_mock": true
+  }
+}

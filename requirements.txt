@@ -1,0 +1,6 @@
+torch
+datasets>=2.19
+PyYAML>=6.0
+matplotlib>=3.7
+scikit-learn>=1.3
+gensim>=4.4

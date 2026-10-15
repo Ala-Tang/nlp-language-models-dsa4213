@@ -1,0 +1,95 @@
+{
+  "quick": true,
+  "seed": 42,
+  "corpus": "Salesforce/wikitext:wikitext-2-v1",
+  "data_source": "huggingface:Salesforce/wikitext:wikitext-2-v1",
+  "token_counts": {
+    "train": 7169,
+    "validation": 1128,
+    "test": 1105
+  },
+  "vocab_size": 704,
+  "hardware": {
+    "device": "cuda",
+    "name": "Tesla T4",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "python": "3.13.15",
+    "torch": "2.11.0+cu130"
+  },
+  "models": {
+    "ngram": {
+      "validation": {
+        "weights": [
+          0.0,
+          0.75,
+          0.25,
+          0.0
+        ],
+        "loss": 3.2323794402106474,
+        "perplexity": 25.339880023433388,
+        "tokens": 1127
+      },
+      "test": {
+        "loss": 3.2793414164273145,
+        "perplexity": 26.558276094663185,
+        "tokens": 1104
+      },
+      "parameters": 0,
+      "count_entries": 9938,
+      "train_seconds": 0.09577283800001624,
+      "inference_tokens_per_second": 464308.98081316135
+    },
+    "rnn": {
+      "test": {
+        "loss": 5.9082000290138135,
+        "perplexity": 368.04309195370416,
+        "tokens": 1104
+      },
+      "parameters": {
+        "total": 474560,
+        "trainable": 474560
+      },
+      "train_seconds": 1.7463341530000207,
+      "epoch_seconds": [
+        1.6726983589999236
+      ],
+      "best_validation_loss": 5.855375166370896,
+      "inference_tokens_per_second": 71499.27966387194
+    },
+    "lstm": {
+      "test": {
+        "loss": 6.401749762935915,
+        "perplexity": 602.8990458756657,
+        "tokens": 1104
+      },
+      "parameters": {
+        "total": 1144256,
+        "trainable": 1144256
+      },
+      "train_seconds": 0.06499731700000666,
+      "epoch_seconds": [
+        0.040473061999932725
+      ],
+      "best_validation_loss": 6.400804819210292,
+      "inference_tokens_per_second": 338782.1823817544
+    },
+    "transformer": {
+      "test": {
+        "loss": 5.2522388402966484,
+        "perplexity": 190.99339385400006,
+        "tokens": 1104
+      },
+      "parameters": {
+        "total": 777152,
+        "trainable": 777152
+      },
+      "train_seconds": 0.2666777460000276,
+      "epoch_seconds": [
+        0.1562873400000626
+      ],
+      "best_validation_loss": 5.212835601292148,
+      "inference_tokens_per_second": 477342.0350112177,
+      "causality_test": "PASSED"
+    }
+  }
+}

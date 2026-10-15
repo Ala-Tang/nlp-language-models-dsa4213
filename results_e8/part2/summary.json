@@ -1,0 +1,96 @@
+{
+  "quick": false,
+  "seed": 42,
+  "architecture": "lstm",
+  "data_source": {
+    "wikitext": "huggingface:Salesforce/wikitext:wikitext-2-v1",
+    "word2vec": "trained:gensim_skipgram:wikitext_train",
+    "glove": "gensim:glove-wiki-gigaword-100"
+  },
+  "token_counts": {
+    "train": 2075677,
+    "validation": 216347,
+    "test": 244102
+  },
+  "vocab_size": 28913,
+  "models": {
+    "random_trainable": {
+      "test": {
+        "loss": 5.353238800070207,
+        "perplexity": 211.29152185229583,
+        "tokens": 244101
+      },
+      "parameters": {
+        "total": 11214869,
+        "trainable": 11214869
+      },
+      "train_seconds": 366.476162186,
+      "epoch_seconds": [
+        43.55164105199992,
+        43.903475183999944,
+        43.98539599599985,
+        43.97248683099997,
+        44.12139144799994,
+        44.21001540300017,
+        44.40163164900014,
+        44.236089558
+      ],
+      "best_validation_loss": 5.420773682550174,
+      "inference_tokens_per_second": 166520.85384567286,
+      "reused_part1": true,
+      "embedding_frozen_test": "N/A"
+    },
+    "word2vec_frozen": {
+      "test": {
+        "loss": 5.197877604326693,
+        "perplexity": 180.88791844076923,
+        "tokens": 244101
+      },
+      "parameters": {
+        "total": 11214869,
+        "trainable": 8323569
+      },
+      "train_seconds": 361.241708992,
+      "epoch_seconds": [
+        44.292794082,
+        41.86071565099974,
+        43.70217170900014,
+        43.14531106599998,
+        43.521010624000155,
+        43.49265898099975,
+        43.50701417400023,
+        43.64446466999971
+      ],
+      "best_validation_loss": 5.269811048115634,
+      "inference_tokens_per_second": 166157.61213186636,
+      "embedding_frozen_test": "PASSED",
+      "embedding_training_seconds": 60.96881019600005
+    },
+    "glove_frozen": {
+      "test": {
+        "loss": 5.436914785017268,
+        "perplexity": 229.73231539444882,
+        "tokens": 244101
+      },
+      "parameters": {
+        "total": 11214869,
+        "trainable": 8323569
+      },
+      "train_seconds": 359.10088504999976,
+      "epoch_seconds": [
+        42.604933334999714,
+        42.86225576800007,
+        42.92385922199992,
+        43.08611250000013,
+        43.24520903599978,
+        43.37484744199992,
+        43.49362363399996,
+        43.44407001100035
+      ],
+      "best_validation_loss": 5.50786863476214,
+      "inference_tokens_per_second": 167190.40999848658,
+      "embedding_frozen_test": "PASSED"
+    }
+  },
+  "coverage_file": "coverage.json"
+}

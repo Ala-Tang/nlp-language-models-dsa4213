@@ -1,0 +1,25 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Generated data, models, and caches
+checkpoints*/
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Submission-local files
+Assignment1_2026.pdf
+*.zip
+
+# HuggingFace / notebook / IDE
+.huggingface/
+.ipynb_checkpoints/
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db

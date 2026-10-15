@@ -1,0 +1,9 @@
+[Part I] data source: "huggingface:Salesforce/wikitext:wikitext-2-v1"
+[Part I] token counts: train=2075677, validation=216347, test=244102
+[Part I] vocabulary size: 28913
+Part I 已完成，跳过：results/part1
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[Part III] data source: {"wikitext_vocabulary": "huggingface:Salesforce/wikitext:wikitext-2-v1", "sst2": "huggingface:nyu-mll/glue:sst2"}
+[Part III] sample counts: train=10000, validation=2000, test=872
+[Part III] vocabulary size: 28913
+Part III 完成：results/part3

@@ -1,0 +1,30 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[Part I] data source: "huggingface:Salesforce/wikitext:wikitext-2-v1"
+[Part I] token counts: train=2075677, validation=216347, test=244102
+[Part I] vocabulary size: 28913
+epoch 1/8: train=6.7510, val=5.9355, time=36.58s
+epoch 2/8: train=5.9188, val=5.6309, time=38.93s
+epoch 3/8: train=5.6136, val=5.4876, time=41.07s
+epoch 4/8: train=5.4118, val=5.3953, time=40.25s
+epoch 5/8: train=5.2599, val=5.3508, time=41.11s
+epoch 6/8: train=5.1427, val=5.3270, time=40.89s
+epoch 7/8: train=5.0451, val=5.2968, time=41.11s
+epoch 8/8: train=4.9650, val=5.2776, time=41.09s
+epoch 1/8: train=7.0613, val=6.4867, time=43.55s
+epoch 2/8: train=6.5095, val=6.1439, time=43.90s
+epoch 3/8: train=6.2410, val=5.9687, time=43.99s
+epoch 4/8: train=6.0691, val=5.8395, time=43.97s
+epoch 5/8: train=5.9214, val=5.7117, time=44.12s
+epoch 6/8: train=5.7751, val=5.6048, time=44.21s
+epoch 7/8: train=5.6393, val=5.5036, time=44.40s
+epoch 8/8: train=5.5185, val=5.4208, time=44.24s
+epoch 1/8: train=6.3987, val=5.7414, time=30.43s
+epoch 2/8: train=5.7009, val=5.4708, time=30.48s
+epoch 3/8: train=5.3855, val=5.3315, time=30.76s
+epoch 4/8: train=5.1630, val=5.2571, time=30.84s
+epoch 5/8: train=4.9944, val=5.2130, time=30.75s
+epoch 6/8: train=4.8609, val=5.1911, time=30.72s
+epoch 7/8: train=4.7508, val=5.1847, time=30.80s
+epoch 8/8: train=4.6603, val=5.1726, time=30.65s
+Transformer causality test: PASSED
+Part I 完成：results/part1

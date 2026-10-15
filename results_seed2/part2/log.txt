@@ -1,0 +1,51 @@
+[Part I] data source: "huggingface:Salesforce/wikitext:wikitext-2-v1"
+[Part I] token counts: train=2075677, validation=216347, test=244102
+[Part I] vocabulary size: 28913
+Part I 已完成，跳过：results/part1
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[Part II] data source: {"wikitext": "huggingface:Salesforce/wikitext:wikitext-2-v1", "word2vec": "trained:gensim_skipgram:wikitext_train", "glove": "gensim:glove-wiki-gigaword-100"}
+[Part II] token counts: train=2075677, validation=216347, test=244102
+[Part II] vocabulary size: 28913
+epoch 1/20: train=7.0356, val=6.5313, time=44.37s
+epoch 2/20: train=6.5698, val=6.1591, time=42.14s
+epoch 3/20: train=6.1764, val=5.8473, time=43.73s
+epoch 4/20: train=5.8856, val=5.6222, time=43.18s
+epoch 5/20: train=5.6517, val=5.4804, time=43.58s
+epoch 6/20: train=5.4834, val=5.3788, time=43.50s
+epoch 7/20: train=5.3520, val=5.3078, time=43.51s
+epoch 8/20: train=5.2424, val=5.2486, time=43.66s
+epoch 9/20: train=5.1473, val=5.2096, time=43.57s
+epoch 10/20: train=5.0625, val=5.1702, time=43.69s
+epoch 11/20: train=4.9880, val=5.1399, time=43.71s
+epoch 12/20: train=4.9193, val=5.1167, time=43.65s
+epoch 13/20: train=4.8577, val=5.1008, time=43.64s
+epoch 14/20: train=4.8009, val=5.0771, time=43.65s
+epoch 15/20: train=4.7478, val=5.0699, time=43.75s
+epoch 16/20: train=4.6998, val=5.0678, time=43.64s
+epoch 17/20: train=4.6539, val=5.0552, time=43.63s
+epoch 18/20: train=4.6111, val=5.0537, time=43.79s
+epoch 19/20: train=4.5718, val=5.0496, time=43.67s
+epoch 20/20: train=4.5335, val=5.0501, time=43.81s
+word2vec_frozen embedding freeze test: PASSED
+epoch 1/20: train=7.0774, val=6.6525, time=42.55s
+epoch 2/20: train=6.7406, val=6.3737, time=42.65s
+epoch 3/20: train=6.4743, val=6.1378, time=42.95s
+epoch 4/20: train=6.2336, val=5.9336, time=43.21s
+epoch 5/20: train=6.0059, val=5.7269, time=43.49s
+epoch 6/20: train=5.7843, val=5.5447, time=43.31s
+epoch 7/20: train=5.5992, val=5.4376, time=43.53s
+epoch 8/20: train=5.4601, val=5.3471, time=43.58s
+epoch 9/20: train=5.3455, val=5.2831, time=43.47s
+epoch 10/20: train=5.2454, val=5.2394, time=43.57s
+epoch 11/20: train=5.1571, val=5.1814, time=43.70s
+epoch 12/20: train=5.0775, val=5.1445, time=43.52s
+epoch 13/20: train=5.0051, val=5.1226, time=43.64s
+epoch 14/20: train=4.9384, val=5.0982, time=43.73s
+epoch 15/20: train=4.8781, val=5.0798, time=43.66s
+epoch 16/20: train=4.8217, val=5.0634, time=43.72s
+epoch 17/20: train=4.7696, val=5.0513, time=43.68s
+epoch 18/20: train=4.7209, val=5.0450, time=43.61s
+epoch 19/20: train=4.6757, val=5.0412, time=43.66s
+epoch 20/20: train=4.6332, val=5.0300, time=43.66s
+glove_frozen embedding freeze test: PASSED
+Part II 完成：results/part2

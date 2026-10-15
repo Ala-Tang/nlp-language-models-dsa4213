@@ -1,0 +1,27 @@
+[Part I] data source: "huggingface:Salesforce/wikitext:wikitext-2-v1"
+[Part I] token counts: train=2075677, validation=216347, test=244102
+[Part I] vocabulary size: 28913
+Part I 已完成，跳过：results/part1
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[Part II] data source: {"wikitext": "huggingface:Salesforce/wikitext:wikitext-2-v1", "word2vec": "trained:gensim_skipgram:wikitext_train", "glove": "gensim:glove-wiki-gigaword-100"}
+[Part II] token counts: train=2075677, validation=216347, test=244102
+[Part II] vocabulary size: 28913
+epoch 1/8: train=7.0602, val=6.5940, time=44.29s
+epoch 2/8: train=6.6308, val=6.2408, time=41.86s
+epoch 3/8: train=6.2750, val=5.9291, time=43.70s
+epoch 4/8: train=5.9670, val=5.6850, time=43.15s
+epoch 5/8: train=5.7148, val=5.5230, time=43.52s
+epoch 6/8: train=5.5328, val=5.4141, time=43.49s
+epoch 7/8: train=5.3939, val=5.3318, time=43.51s
+epoch 8/8: train=5.2797, val=5.2698, time=43.64s
+word2vec_frozen embedding freeze test: PASSED
+epoch 1/8: train=7.0821, val=6.6632, time=42.60s
+epoch 2/8: train=6.7322, val=6.3540, time=42.86s
+epoch 3/8: train=6.4502, val=6.1398, time=42.92s
+epoch 4/8: train=6.2719, val=6.0028, time=43.09s
+epoch 5/8: train=6.1287, val=5.8684, time=43.25s
+epoch 6/8: train=5.9873, val=5.7551, time=43.37s
+epoch 7/8: train=5.8465, val=5.6220, time=43.49s
+epoch 8/8: train=5.6913, val=5.5079, time=43.44s
+glove_frozen embedding freeze test: PASSED
+Part II 完成：results/part2

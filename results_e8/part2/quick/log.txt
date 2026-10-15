@@ -1,0 +1,13 @@
+[Part I] data source: "huggingface:Salesforce/wikitext:wikitext-2-v1"
+[Part I] token counts: train=7169, validation=1128, test=1105
+[Part I] vocabulary size: 704
+Part I 已完成，跳过：results/part1/quick
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[Part II] data source: {"wikitext": "huggingface:Salesforce/wikitext:wikitext-2-v1", "word2vec": "quick_mock:word2vec", "glove": "quick_mock:glove-wiki-gigaword-100"}
+[Part II] token counts: train=7169, validation=1128, test=1105
+[Part II] vocabulary size: 704
+epoch 1/1: train=6.5464, val=6.4699, time=0.39s
+word2vec_frozen embedding freeze test: PASSED
+epoch 1/1: train=6.5462, val=6.4690, time=0.04s
+glove_frozen embedding freeze test: PASSED
+Part II 完成：results/part2/quick

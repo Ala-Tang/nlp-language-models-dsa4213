@@ -1,0 +1,62 @@
+seed: 42
+device: auto
+paths:
+  results: results
+  checkpoints: checkpoints
+data:
+  dataset: Salesforce/wikitext
+  subset: wikitext-2-v1
+  min_freq: 2
+  max_vocab: 30000
+  context_length: 64
+  batch_size: 64
+  num_workers: 0
+  quick_train_lines: 120
+  quick_val_lines: 30
+  quick_test_lines: 30
+model:
+  embedding_dim: 100
+  recurrent:
+    hidden_dim: 256
+    num_layers: 2
+    dropout: 0.3
+  transformer:
+    d_model: 128
+    nhead: 4
+    num_layers: 3
+    dim_feedforward: 512
+    dropout: 0.1
+train:
+  epochs: 20
+  quick_epochs: 1
+  learning_rate: 0.001
+  weight_decay: 0.01
+  gradient_clip: 1.0
+  warmup_batches: 2
+  generation:
+    prompts:
+      - "the meaning of life"
+      - "in the beginning"
+      - "the united states"
+      - "scientists discovered that"
+      - "once upon a time"
+    temperature: 0.8
+    top_k: 40
+    max_new_tokens: 30
+ngram:
+  grid_step: 0.25
+  min_probability: 1.0e-12
+word2vec:
+  window: 5
+  epochs: 5
+  negative: 5
+part3:
+  train_size: 10000
+  validation_size: 2000
+  quick_train_size: 200
+  quick_validation_size: 80
+  quick_test_size: 100
+  max_length: 64
+  batch_size: 128
+  c_values: [0.01, 0.1, 1.0, 10.0]
+  logistic_max_iter: 2000
